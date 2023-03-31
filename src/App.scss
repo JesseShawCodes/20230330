@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+
+.list-container {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.227);
+  margin: 20px auto;
+  width: 50%;
+  text-align: left;
+
+  > a {
+    text-decoration: none;
+  }
+}

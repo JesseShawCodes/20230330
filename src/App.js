@@ -1,13 +1,12 @@
-import './App.css';
+import './App.scss';
 import NavBar from './NavBar';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
-import ArticleListPage from './pages/ArticlesList';
+import ArticleListPage from './pages/ArticlesListPage';
 import ArticlePage from './pages/ArticlePage';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-
-import bootstrap from 'bootstrap';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
@@ -15,12 +14,12 @@ function App() {
       <div className="App">
         <NavBar />
         <div id="page-body">
-          Welcome to the blog.
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/articles" element={<ArticleListPage />} />
             <Route path="/articles/:articleId" element={<ArticlePage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
       </div>
