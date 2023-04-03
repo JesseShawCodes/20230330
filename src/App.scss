@@ -52,3 +52,12 @@
     text-decoration: none;
   }
 }
+
+#add_comment_form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0px auto;
+  border-top: 1px solid black;
+  padding: 20px;
+}
