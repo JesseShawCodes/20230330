@@ -13,15 +13,15 @@ const ArticlePage = () => {
     const [articleInfo, setArticleInfo] = useState({upvotes: 0, comments: [], canUpVote: false});
     const { canUpVote } = articleInfo;
 
-
-
     const { articleId } = useParams();
 
     const { user, isLoading }= useUser();
     
     const article = articles.find(article => article.name === articleId)
 
-    function test(upvotes) {
+    console.log(user)
+
+    function upvotesCount(upvotes) {
         if (upvotes) {
             return `This article has ${articleInfo.upvotes} upvotes`
         }
@@ -30,6 +30,8 @@ const ArticlePage = () => {
         const loadArticleInfo = async () => {
             const token = user && await user.getIdToken();
             const headers = token ? { authtoken: token } : {};
+            console.log('----------')
+            console.log(headers)
             const response = await axios.get(`/api/articles/${articleId}`, {
                 headers,
 
@@ -41,7 +43,7 @@ const ArticlePage = () => {
             loadArticleInfo();
         }
 
-    }, [isLoading, user])
+    }, [articleId, isLoading, user])
 
     const addUpvote = async () => {
         const token = user && await user.getIdToken();
@@ -60,7 +62,6 @@ const ArticlePage = () => {
         return <NotFoundPage />
     }
 
-    // This is loading multiple times. Why?
     function CheckComments(comments) {
         if (!comments.comments) {
             return <h1>No Comment</h1>
@@ -72,30 +73,12 @@ const ArticlePage = () => {
 
     return (
         <>
-        {
-            !user ?
-                <h1>You must be logged in to view this page</h1>
-                :
-                <>
-                <h1>{articleInfo.title}</h1>
-                <div className="upvotes_section">
-                    { 
-                        user 
-                        ? <><button onClick={addUpvote}>{canUpVote ? 'Upvote' : 'Already Voted'}</button><p>{test(articleInfo.upvotes)}</p></>
-                        : <button>Log in to upvote</button>
-                    }
-                   
-                </div>
-                <p>{articleInfo.content}</p>
-                {
-                    user
-                    ? <><AddCommentForm articleName={{articleId}} onArticleUpdated={updatedArticle => setArticleInfo(updatedArticle)}/><CheckComments comments={articleInfo.comments} /></>
-                    : <button>Log in to add a comment</button>
-                }
-                </>
-        }
-
-        
+        <h1>{articleInfo.title}</h1>
+        <div className="upvotes_section">
+            <button onClick={addUpvote}>{canUpVote ? 'Upvote' : 'Already Voted'}</button><p>{upvotesCount(articleInfo.upvotes)}</p>
+        </div>
+        <p>{articleInfo.content}</p>
+        <AddCommentForm articleName={{articleId}} onArticleUpdated={updatedArticle => setArticleInfo(updatedArticle)}/><CheckComments comments={articleInfo.comments} />
         </>
     );
 }
