@@ -62,7 +62,6 @@ const ArticlePage = () => {
 
     // This is loading multiple times. Why?
     function CheckComments(comments) {
-        console.log("CHECK COMMENTS")
         if (!comments.comments) {
             return <h1>No Comment</h1>
         }
@@ -73,21 +72,29 @@ const ArticlePage = () => {
 
     return (
         <>
-        <h1>{articleInfo.title}</h1>
-        <div className="upvotes_section">
-            { 
-                user 
-                ? <><button onClick={addUpvote}>{canUpVote ? 'Upvote' : 'Already Voted'}</button><p>{test(articleInfo.upvotes)}</p></>
-                : <button>Log in to upvote</button>
-            }
-           
-        </div>
-        <p>{articleInfo.content}</p>
         {
-            user
-            ? <><AddCommentForm articleName={{articleId}} onArticleUpdated={updatedArticle => setArticleInfo(updatedArticle)}/><CheckComments comments={articleInfo.comments} /></>
-            : <button>Log in to add a comment</button>
+            !user ?
+                <h1>You must be logged in to view this page</h1>
+                :
+                <>
+                <h1>{articleInfo.title}</h1>
+                <div className="upvotes_section">
+                    { 
+                        user 
+                        ? <><button onClick={addUpvote}>{canUpVote ? 'Upvote' : 'Already Voted'}</button><p>{test(articleInfo.upvotes)}</p></>
+                        : <button>Log in to upvote</button>
+                    }
+                   
+                </div>
+                <p>{articleInfo.content}</p>
+                {
+                    user
+                    ? <><AddCommentForm articleName={{articleId}} onArticleUpdated={updatedArticle => setArticleInfo(updatedArticle)}/><CheckComments comments={articleInfo.comments} /></>
+                    : <button>Log in to add a comment</button>
+                }
+                </>
         }
+
         
         </>
     );

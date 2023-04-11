@@ -30,7 +30,7 @@ const NavBar = () => {
                             ? <button className="btn btn-secondary" onClick={() => {
                                 signOut(getAuth())
                             }}>Logout</button>
-                            : <button className="btn" onClick={() => {
+                            : <button className="btn btn-secondary" onClick={() => {
                                 navigate('/login')
                             }}>Login</button>
                         }
