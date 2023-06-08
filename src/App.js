@@ -9,6 +9,7 @@ import CreateAccountPage from './pages/CreateAccountPage';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import NotFoundPage from './pages/NotFoundPage';
+import MusicListPage from './pages/MusicPage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/articles" element={<ArticleListPage />} />
+            <Route path="/music_list" element={<MusicListPage />} />
             <Route path="/articles/:articleId" element={<ArticlePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/create_account" element={<CreateAccountPage />} />

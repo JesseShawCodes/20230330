@@ -30,8 +30,7 @@ const ArticlePage = () => {
         const loadArticleInfo = async () => {
             const token = user && await user.getIdToken();
             const headers = token ? { authtoken: token } : {};
-            console.log('----------')
-            console.log(headers)
+
             const response = await axios.get(`/api/articles/${articleId}`, {
                 headers,
 
@@ -39,7 +38,7 @@ const ArticlePage = () => {
             const newArticleInfo = response.data;
             setArticleInfo(newArticleInfo)
         }
-        if (isLoading) {
+        if (!isLoading) {
             loadArticleInfo();
         }
 

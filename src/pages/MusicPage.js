@@ -1,34 +1,34 @@
-import List from "../components/ArticlesList";
 import axios from "axios";
 
 import { useState, useEffect } from "react";
 
 import useUser from "../hooks/useUser";
 
+import List from "../components/ArticlesList"
 
-const ArticleListPage = () => {
-    const [articleList, setArticleList] = useState();
+const MusicListPage = () => {
+    const [musicList, setMusicList] = useState();
     const { user, isLoading } = useUser();
 
     useEffect(() => {
 
-        const loadArticleList = async () => {
+        const loadMusicList = async () => {
             const token = user && await user.getIdToken();
             const headers = token ? { authtoken: token } : {};
             const response = await axios.get(`/api/articles`, {
                 headers,
             });
-            const articleList = response;
+            const musicList = response;
 
-            setArticleList(articleList.data);
-            articles_list(articleList.data)
+            setMusicList(musicList.data);
+            music_list(musicList.data)
         }
         if (isLoading) {
-            loadArticleList();
+            loadMusicList();
         }
     }, [])
 
-    function articles_list(list) {
+    function music_list(list) {
         if (!list) {
             return <h1>Loading...</h1>
         }
@@ -38,11 +38,11 @@ const ArticleListPage = () => {
     }
     return (
         <div className="container">
-            <h1>Articles</h1>
+            <h1>Music Page</h1>
             <div>
                 {
                     user ?
-                        setArticleList ? articles_list(articleList) : <h3>Loading...</h3>
+                        setMusicList ? music_list(musicList) : <h3>Loading...</h3>
                         :
                         <p>You must be logged in to view this page</p>
                 }
@@ -52,4 +52,4 @@ const ArticleListPage = () => {
     )
 }
 
-export default ArticleListPage;
+export default MusicListPage;
