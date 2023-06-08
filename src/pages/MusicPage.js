@@ -6,6 +6,8 @@ import useUser from "../hooks/useUser";
 
 import List from "../components/ArticlesList"
 
+import MusicList from "../components/MusicList";
+
 const MusicListPage = () => {
     const [musicList, setMusicList] = useState();
     const { user, isLoading } = useUser();
@@ -33,7 +35,7 @@ const MusicListPage = () => {
             return <h1>Loading...</h1>
         }
         else {
-            return <List list_items={list} />
+            return <MusicList list_items={list} />
         }
     }
     return (
