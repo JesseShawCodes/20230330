@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 
 import useUser from "../hooks/useUser";
 
-import List from "../components/ArticlesList"
-
 import MusicList from "../components/MusicList";
 
 const MusicListPage = () => {
@@ -17,7 +15,7 @@ const MusicListPage = () => {
         const loadMusicList = async () => {
             const token = user && await user.getIdToken();
             const headers = token ? { authtoken: token } : {};
-            const response = await axios.get(`/api/articles`, {
+            const response = await axios.get(`/api/music/search/radiohead`, {
                 headers,
             });
             const musicList = response;
@@ -35,7 +33,12 @@ const MusicListPage = () => {
             return <h1>Loading...</h1>
         }
         else {
-            return <MusicList list_items={list} />
+            var list_items = list.artists.items
+            list_items.map(article => (
+                console.log(article)
+            ))
+            // return <h1>Success!</h1>
+            return <MusicList list_items={list_items} />
         }
     }
     return (
