@@ -41,9 +41,15 @@ const MusicListPage = () => {
             return <MusicList list_items={list_items} />
         }
     }
+    /*
+    https://blog.logrocket.com/create-search-bar-react-from-scratch/
+    */
     return (
         <div className="container">
             <h1>Music Page</h1>
+            <div>
+                <input placeholder="Enter Music Search Term"/>
+            </div>
             <div>
                 {
                     user ?
