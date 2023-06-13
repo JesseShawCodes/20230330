@@ -11,6 +11,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import NotFoundPage from './pages/NotFoundPage';
 import MusicListPage from './pages/MusicPage';
 
+/* Test Features */
+import SearchPage from './pages/SearchPage';
+import { Counter } from './features/counter';
 function App() {
   return (
     <BrowserRouter>
@@ -22,6 +25,10 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/articles" element={<ArticleListPage />} />
             <Route path="/music_list" element={<MusicListPage />} />
+            {/*<!----- Test Search Page ---->*/}
+            <Route path="/search" element={<SearchPage />} />
+            {/*<!----- Test Redux  Page ---->*/}
+            <Route path="/counter_redux" element={< Counter />}/>
             <Route path="/articles/:articleId" element={<ArticlePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/create_account" element={<CreateAccountPage />} />
