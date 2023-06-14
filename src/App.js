@@ -14,6 +14,7 @@ import MusicListPage from './pages/MusicPage';
 /* Test Features */
 import SearchPage from './pages/SearchPage';
 import { Counter } from './features/counter';
+import { Pokemon } from './pages/TestRtk';
 function App() {
   return (
     <BrowserRouter>
@@ -29,6 +30,8 @@ function App() {
             <Route path="/search" element={<SearchPage />} />
             {/*<!----- Test Redux  Page ---->*/}
             <Route path="/counter_redux" element={< Counter />}/>
+            {/*<!---   Test RTK Query ------>*/}
+            <Route path="test_rtk" element={<Pokemon />} />
             <Route path="/articles/:articleId" element={<ArticlePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/create_account" element={<CreateAccountPage />} />
