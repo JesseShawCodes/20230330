@@ -15,6 +15,7 @@ import MusicListPage from './pages/MusicPage';
 import SearchPage from './pages/SearchPage';
 import { Counter } from './features/counter';
 import { Pokemon } from './pages/TestRtk';
+import SaveButton from './pages/TestHooks';
 function App() {
   return (
     <BrowserRouter>
@@ -32,6 +33,8 @@ function App() {
             <Route path="/counter_redux" element={< Counter />}/>
             {/*<!---   Test RTK Query ------>*/}
             <Route path="test_rtk" element={<Pokemon />} />
+            {/*Test Hooks */}
+            <Route path="test_hook" element={<SaveButton />} />
             <Route path="/articles/:articleId" element={<ArticlePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/create_account" element={<CreateAccountPage />} />

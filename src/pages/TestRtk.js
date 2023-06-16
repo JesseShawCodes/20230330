@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { useGetPokemonByNameQuery } from '../services/pokemon'
+/*
 
 export function Pokemon() {
   // Using a query hook automatically fetches data and returns query values
@@ -17,10 +18,58 @@ export function Pokemon() {
         <>Loading...</>
       ) : data ? (
         <>
-          <h3>{data.species.name}</h3>
-          <img src={data.sprites.front_shiny} alt={data.species.name} />
+          <h1>Response</h1>
         </>
       ) : null}
     </div>
   )
+}
+*/
+
+
+export function Pokemon() {
+  const people = [
+    "Siri",
+    "Alexa",
+    "Google",
+    "Facebook",
+    "Twitter",
+    "Linkedin",
+    "Sinkedin"
+  ];
+  
+ const [searchTerm, setSearchTerm] = React.useState("");
+ const [searchResults, setSearchResults] = React.useState([]);
+ const handleChange = event => {
+    setSearchTerm(event.target.value);
+  };
+
+ React.useEffect(() => {
+    // const results = people
+    console.log(searchTerm)
+    // const { data, error, isLoading } = useGetPokemonByNameQuery('radiohead')
+    
+    const results = people.filter(person =>
+      person.toLowerCase().includes(searchTerm)
+    );
+    
+    setSearchResults(results);
+    console.log(results)
+  }, [searchTerm]);
+
+  return (
+    <div className="App">
+      <input
+        type="text"
+        placeholder="Search"
+        value={searchTerm}
+        onChange={handleChange}
+      />
+      <ul>
+         {searchResults.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+    </div>
+  );
 }
