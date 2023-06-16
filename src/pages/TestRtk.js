@@ -4,10 +4,11 @@ import { useGetPokemonByNameQuery } from '../services/pokemon'
 
 export function Pokemon() {
   // Using a query hook automatically fetches data and returns query values
-  const { data, error, isLoading } = useGetPokemonByNameQuery('bulbasaur')
+  const { data, error, isLoading } = useGetPokemonByNameQuery('radiohead')
   // Individual hooks are also accessible under the generated endpoints:
   // const { data, error, isLoading } = pokemonApi.endpoints.getPokemonByName.useQuery('bulbasaur')
-
+  console.log(data)
+  console.log(error)
   return (
     <div className="App">
       {error ? (
