@@ -11,6 +11,8 @@ export default function SaveButton() {
     function handleOffline() {
       setIsOnline(false);
     }
+    console.log(isOnline);
+    console.log(setIsOnline)
     window.addEventListener('online', handleOnline);
     window.addEventListener('offline', handleOffline);
     return () => {
@@ -20,7 +22,7 @@ export default function SaveButton() {
   }, []);
 
   function handleSaveClick() {
-    console.log('✅ Progress saved');
+    console.log(`✅ Progress saved: ${isOnline}`);
   }
 
   return (
