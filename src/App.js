@@ -14,8 +14,9 @@ import MusicListPage from './pages/MusicPage';
 /* Test Features */
 import SearchPage from './pages/SearchPage';
 import { Counter } from './features/counter';
-import { Pokemon } from './pages/TestRtk';
 import SaveButton from './pages/TestHooks';
+/*https://dev.to/raaynaldo/rtk-query-tutorial-crud-51hl*/
+import TestRtkSearch from './pages/TestRtkSearch';
 function App() {
   return (
     <BrowserRouter>
@@ -31,10 +32,10 @@ function App() {
             <Route path="/search" element={<SearchPage />} />
             {/*<!----- Test Redux  Page ---->*/}
             <Route path="/counter_redux" element={< Counter />}/>
-            {/*<!---   Test RTK Query ------>*/}
-            <Route path="test_rtk" element={<Pokemon />} />
             {/*Test Hooks */}
             <Route path="test_hook" element={<SaveButton />} />
+            {/*Test RTK SEARCH */}
+            <Route path="test_search" element={<TestRtkSearch/>} />
             <Route path="/articles/:articleId" element={<ArticlePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/create_account" element={<CreateAccountPage />} />

@@ -44,10 +44,16 @@ export function Pokemon() {
     setSearchTerm(event.target.value);
   };
 
- React.useEffect(() => {
+  function search(query) {
+    console.log("SEARCH")
+  }
+
+  const { data, error, isLoading } = useGetPokemonByNameQuery('deftones')
+  React.useEffect(() => {
     // const results = people
     console.log(searchTerm)
-    // const { data, error, isLoading } = useGetPokemonByNameQuery('radiohead')
+    console.log(search("RADIOHEAD"))
+    // const { data, error, isLoading } = useGetPokemonByNameQuery('deftones')
     
     const results = people.filter(person =>
       person.toLowerCase().includes(searchTerm)

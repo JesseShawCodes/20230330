@@ -11,7 +11,7 @@ import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
+// web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAucVo1K5nZf9FdhjtECHtQC14DigXxAls",
   authDomain: "my-blog-app-49f75.firebaseapp.com",
