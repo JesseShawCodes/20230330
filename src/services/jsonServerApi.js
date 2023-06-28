@@ -4,7 +4,6 @@ export const jsonServerApi = createApi({
   reducerPath: 'jsonServerApi',
   baseQuery: fetchBaseQuery({ 
     baseUrl: 'http://localhost:8000/',
-
   }),
   tagTypes: ['Artists'],
   endpoints: (builder) => ({

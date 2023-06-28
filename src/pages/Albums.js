@@ -7,30 +7,37 @@ https://dev.to/raaynaldo/rtk-query-tutorial-crud-51hl
 */
 
 export default function Albums() {
-    const [artist, setArtist] = useState(1)
+    const [artist, setArtist] = useState()
     const { 
         data: musicQuery = [],
         isLoading,
         isError,
         error,
-    } = useGetArtistsQuery("sampha");
+    } = useGetArtistsQuery(artist);
 
     const [searchTerm, setSearchTerm] = React.useState("")
-    const [searchResults, setSearchResults] = React.useState([])
 
     const handleChange = event => {
-        console.log("handle change")
-        setSearchTerm(event.target.value);
+        if (event.target.value.length > 0) {
+            setSearchTerm(event.target.value)
+            setArtist(event.target.value)
+        }
+        else {
+            console.log("SET ARTIST")
+            setSearchTerm("")
+            setArtist("")
+        }
     };
 
     if (isLoading) {
         return <div>loading...</div>
     }
+
     if (isError) {
-        console.log( {error} );
-        return <div>Error...{error.status}</div>
+        console.log({error})
     }
-    console.log(musicQuery.artists.items.length )
+
+    console.log(musicQuery.length)
     return (
         <div>
             <input
@@ -40,13 +47,28 @@ export default function Albums() {
                 onChange={handleChange}
             />
             <div>
-                {musicQuery.artists.items.length > 0 ? musicQuery.artists.items?.map((artist) => (
-                    <div key={artist.id}>
-                        {artist.name}
-
-
+            {
+                isError ? `Error` : ""
+            }
+            </div>
+            <div className="d-flex flex-wrap justify-content-center">
+                {musicQuery.length != 0 ? musicQuery.artists.items?.map((artist) => (
+                    <div key={artist.id} className="mt-4 card" style={{width: 400}}>
+                        {
+                            artist.images.length > 0 ? <img src={artist.images[0].url} alt="TEST IMAGE" className="card-img-top" />: ""
+                        }
+                        <div>
+                            <h2 className='card-title'>
+                                {artist.name}
+                            </h2>
+                        </div>
+                        <div>
+                            {
+                                artist.genres.length > 0 ? `Genres: ${artist.genres}` : ""
+                            }
+                        </div>
                     </div>
-                )) : " No Data Available"
+                )) : "_No Data Available"
                 }
             </div>
         </div>
