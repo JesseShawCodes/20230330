@@ -8,7 +8,7 @@ export default function TestRtkSearch() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("https://dog23.ceo/api/breeds/image/random")
+    fetch("https://dog.ceo/api/breeds/image/random")
       .then((res) => res.json())
       .then((data) => {
         setData(data.message);
@@ -29,7 +29,7 @@ export default function TestRtkSearch() {
     console.log(errorMessage);
     return <div className="App">Error...</div>;
   }
-
+  console.log(isLoading)
   return (
     <div className="App">
       <img src={data} alt="dog" width="500" />

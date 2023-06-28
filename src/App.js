@@ -17,6 +17,7 @@ import { Counter } from './features/counter';
 import SaveButton from './pages/TestHooks';
 /*https://dev.to/raaynaldo/rtk-query-tutorial-crud-51hl*/
 import TestRtkSearch from './pages/TestRtkSearch';
+import Albums from './components/Albums';
 function App() {
   return (
     <BrowserRouter>
@@ -35,7 +36,9 @@ function App() {
             {/*Test Hooks */}
             <Route path="test_hook" element={<SaveButton />} />
             {/*Test RTK SEARCH */}
-            <Route path="test_search" element={<TestRtkSearch/>} />
+            {/* Test CRUD search*/}
+            <Route path="/test_albums" element={<Albums />} />
+            <Route path="/test_search" element={<TestRtkSearch/>} />
             <Route path="/articles/:articleId" element={<ArticlePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/create_account" element={<CreateAccountPage />} />
