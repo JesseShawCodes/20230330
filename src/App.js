@@ -16,7 +16,7 @@ import SearchPage from './pages/SearchPage';
 import { Counter } from './features/counter';
 import SaveButton from './pages/TestHooks';
 /*https://dev.to/raaynaldo/rtk-query-tutorial-crud-51hl*/
-import Albums from './components/Albums';
+import Albums from './pages/Albums';
 import Pokemon from './pages/TestRtk';
 function App() {
   return (
