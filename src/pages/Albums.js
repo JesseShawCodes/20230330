@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useGetArtistsQuery } from "../services/jsonServerApi";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 /*
 RTK Query Tutorial
@@ -37,7 +38,6 @@ export default function Albums() {
         console.log({error})
     }
 
-    console.log(musicQuery.length)
     return (
         <div>
             <input
@@ -46,31 +46,35 @@ export default function Albums() {
                 value={searchTerm}
                 onChange={handleChange}
             />
-            <div>
             {
-                isError ? `Error` : ""
+                isError ? `${<div>Error</div>}` : ""
             }
-            </div>
-            <div className="d-flex flex-wrap justify-content-center">
-                {musicQuery.length != 0 ? musicQuery.artists.items?.map((artist) => (
-                    <div key={artist.id} className="mt-4 card" style={{width: 400}}>
-                        {
-                            artist.images.length > 0 ? <img src={artist.images[0].url} alt="TEST IMAGE" className="card-img-top" />: ""
-                        }
-                        <div>
-                            <h2 className='card-title'>
-                                {artist.name}
-                            </h2>
-                        </div>
-                        <div>
+            <ResponsiveMasonry columnsCountBreakPoints={{350: 2, 750: 2, 900: 3}}>
+                <Masonry>
+                    {musicQuery.length !== 0 ? musicQuery.artists.items?.map((artist) => (
+                        <div key={artist.id} className="mt-4 mx-4 card border-secondary">
                             {
-                                artist.genres.length > 0 ? `Genres: ${artist.genres}` : ""
+                                artist.images.length > 0 ? <img src={artist.images[0].url} alt={artist.name + " Image"} />: ""
                             }
+                            <div>
+                                <h2 className=''>
+                                    {artist.name}
+                                </h2>
+                            </div>
+                            <div>
+                                {
+                                    artist.genres.length > 0 ? `${artist.genres}` : ""
+                                }
+                            </div>
+                            <div>
+                                <span>Followers:</span> {artist.followers.total.toLocaleString("en-US")}
+                            </div>
+                            <button className='btn btn-primary'>Choose this artist</button>
                         </div>
-                    </div>
-                )) : "_No Data Available"
-                }
-            </div>
+                        )) : "_No Data Available"
+                    }
+                </Masonry>
+            </ResponsiveMasonry>
         </div>
     )
 }
