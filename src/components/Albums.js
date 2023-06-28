@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import { useGetAlbumsQuery } from "../services/jsonServerApi";
 
 export default function Albums() {
-    const [page,setPage] = useState(1)
     const { 
         data: albums = [],
         isLoading,
         isError,
         error,
-    } = useGetAlbumsQuery("deftones");
+    } = useGetAlbumsQuery("weeknd");
 
     if (isLoading) {
         return <div>loading...</div>
@@ -17,15 +16,16 @@ export default function Albums() {
         console.log( {error} );
         return <div>Error...{error.status}</div>
     }
+    console.log(albums)
     return (
         <div>
+            <input></input>
             <ul>
-                {albums?.map((album) => (
+                {albums.artists.items?.map((album) => (
                     <li key={album.id}>
-                        {album.id} - {album.title}
+                        {album.name}
                     </li>
                 ))
-
                 }
             </ul>
         </div>
