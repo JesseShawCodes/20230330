@@ -11,6 +11,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import NotFoundPage from './pages/NotFoundPage';
 import MusicListPage from './pages/MusicPage';
 
+import ArtistPage from './pages/ArtistPage';
+
 /* Test Features */
 import SearchPage from './pages/SearchPage';
 import { Counter } from './features/counter';
@@ -18,6 +20,7 @@ import SaveButton from './pages/TestHooks';
 /*https://dev.to/raaynaldo/rtk-query-tutorial-crud-51hl*/
 import Albums from './pages/Albums';
 import Pokemon from './pages/TestRtk';
+
 function App() {
   return (
     <BrowserRouter>
@@ -41,6 +44,7 @@ function App() {
             <Route path="/test_albums" element={<Albums />} />
             <Route path="/test_search" element={<Pokemon />} />
             {/* End Test Pages */}
+            <Route path="/artist/:handle" element={<ArtistPage />} />
             <Route path="/articles/:articleId" element={<ArticlePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/create_account" element={<CreateAccountPage />} />
