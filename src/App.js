@@ -9,17 +9,13 @@ import CreateAccountPage from './pages/CreateAccountPage';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import NotFoundPage from './pages/NotFoundPage';
-import MusicListPage from './pages/MusicPage';
 
 import ArtistPage from './pages/ArtistPage';
 
 /* Test Features */
-import SearchPage from './pages/SearchPage';
-import { Counter } from './features/counter';
 import SaveButton from './pages/TestHooks';
 /*https://dev.to/raaynaldo/rtk-query-tutorial-crud-51hl*/
 import Albums from './pages/Albums';
-import Pokemon from './pages/TestRtk';
 
 function App() {
   return (
@@ -31,18 +27,13 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/articles" element={<ArticleListPage />} />
-            <Route path="/music_list" element={<MusicListPage />} />
             {/* Test Page */}
             {/*<!----- Test Search Page ---->*/}
-            <Route path="/search" element={<SearchPage />} />
-            {/*<!----- Test Redux  Page ---->*/}
-            <Route path="/counter_redux" element={< Counter />}/>
             {/*Test Hooks */}
             <Route path="test_hook" element={<SaveButton />} />
             {/*Test RTK SEARCH */}
             {/* Test CRUD search*/}
             <Route path="/test_albums" element={<Albums />} />
-            <Route path="/test_search" element={<Pokemon />} />
             {/* End Test Pages */}
             <Route path="/artist/:handle" element={<ArtistPage />} />
             <Route path="/articles/:articleId" element={<ArticlePage />} />

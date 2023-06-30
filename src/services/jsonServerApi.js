@@ -5,6 +5,7 @@ export const jsonServerApi = createApi({
   baseQuery: fetchBaseQuery({ 
     baseUrl: process.env.REACT_APP_SERVER,
   }),
+  refetchOnMountOrArgChange: true,
   tagTypes: ['Artists'],
   endpoints: (builder) => ({
     getArtists: builder.query({
@@ -12,7 +13,12 @@ export const jsonServerApi = createApi({
         url: `/api/music/search/${artist}`,
       })
     }),
+    getArtistInfo: builder.query({
+      query: (artist_id) => ({
+        url: `/api/music/search/artist/${artist_id}`
+      })
+    })
   }),
 });
 
-export const { useGetArtistsQuery } = jsonServerApi;
+export const { useGetArtistsQuery, useGetArtistInfoQuery } = jsonServerApi;
