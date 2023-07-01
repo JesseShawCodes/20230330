@@ -21,7 +21,7 @@ const NavBar = () => {
                         <Link to="/articles" className='nav-link active'>Articles</Link>
                     </li>
                     <li className='nav-item'>
-                        <Link to="/music_list" className='nav-link active'>Music List</Link>
+                        <Link to="/music_search" className='nav-link active'>Music Search</Link>
                     </li>
                 </ul>
                 <ul className='navbar-nav'>

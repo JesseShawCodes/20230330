@@ -33,7 +33,7 @@ function App() {
             <Route path="test_hook" element={<SaveButton />} />
             {/*Test RTK SEARCH */}
             {/* Test CRUD search*/}
-            <Route path="/test_albums" element={<Albums />} />
+            <Route path="/music_search" element={<Albums />} />
             {/* End Test Pages */}
             <Route path="/artist/:handle" element={<ArtistPage />} />
             <Route path="/articles/:articleId" element={<ArticlePage />} />
