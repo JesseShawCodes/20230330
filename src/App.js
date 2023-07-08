@@ -8,6 +8,9 @@ import LoginPage from './pages/LoginPage';
 import CreateAccountPage from './pages/CreateAccountPage';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { useState } from 'react';
+import { FaStar } from 'react-icons/fa'
+
 import NotFoundPage from './pages/NotFoundPage';
 
 import ArtistPage from './pages/ArtistPage';
@@ -16,6 +19,7 @@ import ArtistPage from './pages/ArtistPage';
 import SaveButton from './pages/TestHooks';
 /*https://dev.to/raaynaldo/rtk-query-tutorial-crud-51hl*/
 import Albums from './pages/Albums';
+import HookTest from './pages/HookTest';
 
 function App() {
   return (
@@ -34,6 +38,7 @@ function App() {
             {/*Test RTK SEARCH */}
             {/* Test CRUD search*/}
             <Route path="/music_search" element={<Albums />} />
+            <Route path="/hooks_test" element={<HookTest />} />
             {/* End Test Pages */}
             <Route path="/artist/:handle" element={<ArtistPage />} />
             <Route path="/articles/:articleId" element={<ArticlePage />} />
