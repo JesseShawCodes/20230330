@@ -6,7 +6,8 @@ const createArray = (length) => [
 ]
   
 function Star( {selected = false }, onSelect ) {
-    return <FaStar color={selected ? "red" : "grey"} onClick={onSelect}/>;
+    console.log(onSelect)
+    return <FaStar color={selected ? "red" : "grey"} onClick={() => console.log(`CLICK ${onSelect}`)}/>;
 }
   
 function StarRating({totalStars = 5}) {
@@ -24,7 +25,7 @@ function StarRating({totalStars = 5}) {
 const HookTest = () =>
 (
     <div>
-        <StarRating totalStars={10} />
+        <StarRating totalStars={5} />
     </div>
 )
 
