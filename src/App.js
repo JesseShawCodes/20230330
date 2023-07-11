@@ -16,7 +16,6 @@ import NotFoundPage from './pages/NotFoundPage';
 import ArtistPage from './pages/ArtistPage';
 
 /* Test Features */
-import SaveButton from './pages/TestHooks';
 /*https://dev.to/raaynaldo/rtk-query-tutorial-crud-51hl*/
 import Albums from './pages/Albums';
 import HookTest from './pages/HookTest';
@@ -34,7 +33,6 @@ function App() {
             {/* Test Page */}
             {/*<!----- Test Search Page ---->*/}
             {/*Test Hooks */}
-            <Route path="test_hook" element={<SaveButton />} />
             {/*Test RTK SEARCH */}
             {/* Test CRUD search*/}
             <Route path="/music_search" element={<Albums />} />

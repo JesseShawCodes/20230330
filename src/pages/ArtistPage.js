@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { useGetArtistInfoQuery } from "../services/jsonServerApi";
 
@@ -8,14 +8,11 @@ const ArtistPage = () => {
     const { handle } = useParams()
     const {
         data: musicQuery = [],
-        isLoading,
         isError,
         error
     } = useGetArtistInfoQuery(handle)
 
-    const [artist, setArtist] = useState(handle)
-
-    if (!musicQuery.data) {
+    if (!musicQuery.artist) {
         return <div>Loading...</div>
     }
 
@@ -35,9 +32,24 @@ const ArtistPage = () => {
                 !musicQuery.length !== 0 ? 
                     <div>
                         <h1>
-                            {musicQuery.data.name}
+                            {musicQuery.artist.name}
                         </h1>
-                        <img src={musicQuery.data.images[0].url} />
+                        <div className="container-sm">
+                        <img 
+                            src={musicQuery.artist.images[1].url} 
+                            className='img-fluid img-thumbnail' 
+                            alt={musicQuery.artist.name}
+                        />
+                        </div>
+                        <div>
+                            <ol className="list-group list-group-numbered"> 
+                            {musicQuery.tracks.tracks?.map((key, index) => (
+                                <li className="list-group-item" key={index}>
+                                    {key.name}
+                                </li>
+                            ))}
+                            </ol>
+                        </div>
                     </div>
                     : 
                     ""
