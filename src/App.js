@@ -2,14 +2,10 @@ import './App.scss';
 import NavBar from './NavBar';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
-import ArticleListPage from './pages/ArticlesListPage';
-import ArticlePage from './pages/ArticlePage';
 import LoginPage from './pages/LoginPage';
 import CreateAccountPage from './pages/CreateAccountPage';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { useState } from 'react';
-import { FaStar } from 'react-icons/fa'
 
 import NotFoundPage from './pages/NotFoundPage';
 
@@ -29,7 +25,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/articles" element={<ArticleListPage />} />
+
             {/* Test Page */}
             {/*<!----- Test Search Page ---->*/}
             {/*Test Hooks */}
@@ -39,7 +35,6 @@ function App() {
             <Route path="/hooks_test" element={<HookTest />} />
             {/* End Test Pages */}
             <Route path="/artist/:handle" element={<ArtistPage />} />
-            <Route path="/articles/:articleId" element={<ArticlePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/create_account" element={<CreateAccountPage />} />
             <Route path="*" element={<NotFoundPage />} />
