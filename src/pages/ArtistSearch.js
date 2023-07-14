@@ -3,20 +3,13 @@ import { useGetArtistsQuery } from "../services/jsonServerApi";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { useNavigate, useLocation } from "react-router-dom"
 
-/*
-RTK Query Tutorial
-https://dev.to/raaynaldo/rtk-query-tutorial-crud-51hl
-*/
-
-export default function Albums() {
+export default function ArtistSearch() {
     const navigate = useNavigate()
     const location = useLocation()
     const [artist, setArtist] = useState()
     
     var skipParam = true
-    var artistOnLoad = artist
     if (location.search) {
-        artistOnLoad = location.search
         skipParam = false
     }
     const [skip, setSkip] = React.useState(skipParam)
@@ -29,7 +22,6 @@ export default function Albums() {
     const [searchTerm, setSearchTerm] = React.useState("")
 
     const handleChange = event => {
-        console.log(location)
         navigate(`${location.pathname}?q=${event.target.value}`)
         if (event.target.value.length > 0) {
             setSearchTerm(event.target.value)
@@ -42,10 +34,6 @@ export default function Albums() {
             setSkip(true)
         }
     };
-
-    if (isLoading) {
-        return <div>Loading...</div>
-    }
 
     if (isError) {
         console.log({error})
@@ -65,6 +53,7 @@ export default function Albums() {
             {
                 isLoading ? `${<div>Loading</div>}` : ""
             }
+            <div>{isError}</div>
             <ResponsiveMasonry columnsCountBreakPoints={{350: 1, 750: 2, 900: 3}}>
                 <Masonry>
                     {musicQuery.length !== 0 ? musicQuery.artists.items?.map((artist) => (

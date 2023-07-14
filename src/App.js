@@ -13,7 +13,7 @@ import ArtistPage from './pages/ArtistPage';
 
 /* Test Features */
 /*https://dev.to/raaynaldo/rtk-query-tutorial-crud-51hl*/
-import Albums from './pages/Albums';
+import ArtistSearch from './pages/ArtistSearch';
 import HookTest from './pages/HookTest';
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
             {/*Test Hooks */}
             {/*Test RTK SEARCH */}
             {/* Test CRUD search*/}
-            <Route path="/music_search" element={<Albums />} />
+            <Route path="/music_search" element={<ArtistSearch />} />
             <Route path="/hooks_test" element={<HookTest />} />
             {/* End Test Pages */}
             <Route path="/artist/:handle" element={<ArtistPage />} />
