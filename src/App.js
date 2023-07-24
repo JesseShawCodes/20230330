@@ -21,7 +21,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <NavBar />
-        <div id="page-body">
+        <>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
@@ -39,7 +39,7 @@ function App() {
             <Route path="/create_account" element={<CreateAccountPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
-        </div>
+        </>
       </div>
     </BrowserRouter>
   );
