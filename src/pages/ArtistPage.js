@@ -45,7 +45,7 @@ const ArtistPage = () => {
                             <ol className="list-group list-group-numbered"> 
                             {musicQuery.tracks.tracks?.map((key, index) => (
                                 <li className="list-group-item" key={index}>
-                                    {key.name}
+                                    {key.name} - {key.album.name}
                                 </li>
                             ))}
                             </ol>
