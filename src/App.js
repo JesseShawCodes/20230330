@@ -15,7 +15,8 @@ import ArtistPage from './pages/ArtistPage';
 /*https://dev.to/raaynaldo/rtk-query-tutorial-crud-51hl*/
 import ArtistSearch from './pages/ArtistSearch';
 import HookTest from './pages/HookTest';
-
+import Category from './pages/Category';
+import Categories from './pages/Categories';
 function App() {
   return (
     <BrowserRouter>
@@ -38,6 +39,11 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/create_account" element={<CreateAccountPage />} />
             <Route path="*" element={<NotFoundPage />} />
+
+            {/* Nested Route Example */}
+            <Route path="categories" element={<Categories />} >
+              <Route path="category" element={<Category />} />
+            </Route>
           </Routes>
         </>
       </div>
