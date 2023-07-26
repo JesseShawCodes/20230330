@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { useGetArtistsQuery } from "../services/jsonServerApi";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { useNavigate, useLocation } from "react-router-dom"
+import useUser from '../hooks/useUser';
 
 export default function ArtistSearch() {
     const navigate = useNavigate()
     const location = useLocation()
     const [artist, setArtist] = useState()
+
+    const { user } = useUser();
     
     var skipParam = true
     if (location.search) {
@@ -41,12 +44,19 @@ export default function ArtistSearch() {
 
     return (
         <div className='w-90 mx-auto'>
-            <input
-                type="text"
-                placeholder='Search'
-                value={searchTerm}
-                onChange={handleChange}
-            />
+            {
+                user ?
+                <input
+                    type="text"
+                    placeholder='Search'
+                    value={searchTerm}
+                    onChange={handleChange}
+                />
+                :
+                <section>You must be logged in to view this page.</section>
+
+            }
+
             {
                 isError ? `${<div>Error</div>}` : ""
             }
